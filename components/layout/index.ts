@@ -3,3 +3,4 @@ export { Header } from "./Header/Header";
 export { MobileDock } from "./MobileDock/MobileDock";
 export { SiteShell } from "./SiteShell/SiteShell";
 export { SkipLink } from "./SkipLink/SkipLink";
+export { SplashScreen } from "./SplashScreen/SplashScreen";

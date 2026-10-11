@@ -82,6 +82,7 @@ $z-header: 100;
 $z-overlay: 200;
 $z-modal: 300;
 $z-toast: 400;
+$z-splash: 500;
 
 :root {
   --color-ivory: #{$color-ivory};
@@ -163,6 +164,7 @@ $z-toast: 400;
   --z-overlay: #{$z-overlay};
   --z-modal: #{$z-modal};
   --z-toast: #{$z-toast};
+  --z-splash: #{$z-splash};
 
   --header-height: 3.75rem;
   --mobile-dock-height: 4.15rem;

@@ -1,0 +1,113 @@
+@use "../../../styles/abstracts" as *;
+
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: grid;
+  place-items: center;
+  padding:
+    calc(#{$space-lg} + env(safe-area-inset-top, 0px))
+    $gutter
+    calc(#{$space-lg} + env(safe-area-inset-bottom, 0px));
+  background: $color-ivory;
+  background-image: radial-gradient(
+    120% 80% at 50% 0%,
+    $color-cream 0%,
+    $color-ivory 58%,
+    $color-ivory 100%
+  );
+  color: $color-charcoal;
+  transition:
+    opacity 0.75s $ease-out-quart,
+    visibility 0.75s $ease-out-quart;
+
+  @include reduced-motion {
+    transition-duration: 0.2s;
+  }
+}
+
+.exiting {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.inner {
+  display: grid;
+  justify-items: center;
+  gap: $space-sm;
+  text-align: center;
+  max-width: 22rem;
+}
+
+.eyebrow {
+  margin: 0;
+  font-family: $font-sans;
+  font-size: $fs-eyebrow;
+  font-weight: 500;
+  letter-spacing: $tracking-eyebrow;
+  text-transform: uppercase;
+  color: $color-burgundy;
+}
+
+.brand {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+}
+
+.brandMark {
+  font-family: $font-serif;
+  font-size: clamp(2.8rem, 10vw, 4.25rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  color: $color-charcoal;
+}
+
+.brandDot {
+  position: absolute;
+  top: 0.2em;
+  right: -0.55em;
+  width: 0.28em;
+  height: 0.28em;
+  border-radius: 50%;
+  background-color: $color-rose;
+}
+
+.tagline {
+  margin: 0;
+  font-family: $font-sans;
+  font-size: $fs-small;
+  color: $color-charcoal-muted;
+  letter-spacing: $tracking-label;
+}
+
+.progress {
+  display: block;
+  width: 3.75rem;
+  height: 2px;
+  margin-top: $space-md;
+  background-color: rgba($color-burgundy, 0.22);
+  transform-origin: left center;
+  animation: splash-progress 1.6s $ease-out-quart forwards;
+
+  @include reduced-motion {
+    animation: none;
+    transform: scaleX(1);
+    background-color: rgba($color-burgundy, 0.45);
+  }
+}
+
+@keyframes splash-progress {
+  from {
+    transform: scaleX(0.12);
+  }
+
+  to {
+    transform: scaleX(1);
+    background-color: rgba($color-burgundy, 0.55);
+  }
+}
