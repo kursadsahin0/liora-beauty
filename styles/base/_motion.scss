@@ -1,0 +1,50 @@
+@use "../abstracts" as *;
+
+// Split-text scaffolding used by GSAP word/line reveals
+.split-word,
+.split-line {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.split-word-inner,
+.split-line-inner,
+[data-split-inner],
+[data-split-line-inner] {
+  display: inline-block;
+}
+
+// Keep animated content readable when motion is reduced.
+$motion-targets: "[data-hero], [data-intro], [data-story], [data-services], [data-gallery], [data-team], [data-pricing], [data-testimonials], [data-booking], [data-footer], [data-reveal]";
+
+html[data-reduced-motion="true"] {
+  #{$motion-targets},
+  .split-word-inner,
+  .split-line-inner,
+  [data-split-inner],
+  [data-split-line-inner] {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    clip-path: none !important;
+    will-change: auto !important;
+  }
+}
+
+@include reduced-motion {
+  #{$motion-targets},
+  .split-word-inner,
+  .split-line-inner,
+  [data-split-inner],
+  [data-split-line-inner] {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    clip-path: none !important;
+    will-change: auto !important;
+  }
+}
+

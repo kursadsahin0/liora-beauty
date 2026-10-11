@@ -1,0 +1,162 @@
+@use "../../../styles/abstracts" as *;
+
+.section {
+  position: relative;
+  background-color: $color-cream;
+  color: $color-charcoal;
+  padding-block: $section-space;
+  border-top: $border-hairline;
+}
+
+.inner {
+  display: grid;
+  gap: $space-xl;
+
+  @include mq(lg) {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: clamp($space-xl, 5vw, $space-3xl);
+    align-items: start;
+  }
+}
+
+.copy {
+  max-width: 40rem;
+
+  @include mq(lg) {
+    padding-top: $space-2xs;
+  }
+}
+
+.eyebrow {
+  margin-bottom: $space-md;
+}
+
+.title {
+  margin-bottom: $space-md;
+  font-family: $font-serif;
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  font-weight: 400;
+  line-height: $lh-snug;
+  letter-spacing: $tracking-heading;
+  max-width: 16ch;
+
+  :global(.split-word) {
+    margin-right: 0.18em;
+  }
+}
+
+.body {
+  max-width: 34rem;
+  margin-bottom: $space-lg;
+  color: $color-charcoal-muted;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2xs;
+  min-height: $tap-min;
+  font-family: $font-sans;
+  font-size: $fs-small;
+  font-weight: 500;
+  letter-spacing: $tracking-label;
+  text-decoration: none;
+  color: $color-burgundy;
+  border-bottom: 1px solid rgba($color-burgundy, 0.35);
+  padding-block: 0.35rem;
+  transition:
+    color $duration-fast $ease-out-quart,
+    border-color $duration-fast $ease-out-quart,
+    gap $duration-fast $ease-out-quart;
+  @include interactive-focus;
+
+  @include allow-motion {
+    &:hover,
+    &:active {
+      color: $color-burgundy-deep;
+      border-bottom-color: $color-burgundy-deep;
+      gap: $space-xs;
+
+      .linkIcon {
+        transform: translateX(3px);
+      }
+    }
+  }
+}
+
+.linkIcon {
+  transition: transform $duration-fast $ease-out-quart;
+}
+
+.aside {
+  display: grid;
+  gap: $space-md;
+
+  @include mq(md) {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: start;
+  }
+
+  @include mq(lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.detail {
+  padding-top: $space-md;
+  border-top: $border-hairline;
+
+  @include mq(lg) {
+    order: 2;
+  }
+}
+
+.detailLabel {
+  margin-bottom: $space-2xs;
+}
+
+.detailText {
+  font-family: $font-serif;
+  font-size: clamp(1.35rem, 2vw, 1.65rem);
+  line-height: $lh-snug;
+  color: $color-charcoal;
+}
+
+.media {
+  position: relative;
+  overflow: hidden;
+  background-color: $color-ivory;
+  aspect-ratio: 4 / 5;
+  max-height: 28rem;
+
+  @include mq(lg) {
+    order: 1;
+    max-height: 34rem;
+    width: 100%;
+  }
+
+  @include allow-motion {
+    &:hover .image,
+    &:active .image {
+      transform: scale(1.03);
+    }
+  }
+}
+
+.mediaParallax {
+  position: absolute;
+  inset: -5% 0;
+  width: 100%;
+  height: 110%;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center 30%;
+  transition: transform $duration-slow $ease-out-quart;
+}
+
+.media :global(img),
+.mediaParallax :global(img) {
+  object-fit: cover;
+}

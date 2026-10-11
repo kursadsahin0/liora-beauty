@@ -1,0 +1,50 @@
+@use "../../../styles/abstracts" as *;
+
+.root {
+  position: relative;
+  width: 100%;
+}
+
+.padding-sm {
+  padding-block: $space-xl;
+}
+
+.padding-md {
+  padding-block: $space-2xl;
+}
+
+.padding-lg {
+  padding-block: $space-3xl;
+}
+
+.padding-xl {
+  padding-block: clamp($space-3xl, 12vw, $space-4xl);
+}
+
+.padding-none {
+  padding-block: 0;
+}
+
+.tone-ivory {
+  background-color: $color-ivory;
+  color: $color-charcoal;
+}
+
+.tone-cream {
+  background-color: $color-cream;
+  color: $color-charcoal;
+}
+
+.tone-burgundy {
+  background-color: $color-burgundy;
+  color: $color-ivory;
+}
+
+.tone-charcoal {
+  background-color: $color-charcoal;
+  color: $color-ivory;
+}
+
+.tone-transparent {
+  background-color: transparent;
+}

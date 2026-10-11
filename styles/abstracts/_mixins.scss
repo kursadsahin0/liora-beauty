@@ -1,0 +1,77 @@
+@use "tokens" as *;
+@use "breakpoints" as *;
+
+@mixin container($max: $layout-wide) {
+  width: 100%;
+  max-width: $max;
+  margin-inline: auto;
+  padding-inline: $gutter;
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@mixin focus-ring($offset: 3px) {
+  outline: 2px solid $color-focus;
+  outline-offset: $offset;
+}
+
+@mixin interactive-focus {
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+@mixin text-balance {
+  text-wrap: balance;
+}
+
+@mixin hairline-top {
+  border-top: $border-hairline;
+}
+
+@mixin hairline-bottom {
+  border-bottom: $border-hairline;
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+@mixin allow-motion {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}
+
+@mixin tap-target($size: $tap-min) {
+  min-height: $size;
+  min-width: $size;
+}
+
+@mixin touch-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: $tap-min;
+  padding-block: 0.35rem;
+}
+
+@mixin hover-or-active {
+  @include allow-motion {
+    &:hover,
+    &:active {
+      @content;
+    }
+  }
+}

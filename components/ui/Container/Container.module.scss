@@ -1,0 +1,27 @@
+@use "../../../styles/abstracts" as *;
+
+.root {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: $gutter;
+}
+
+.wide {
+  max-width: $layout-wide;
+}
+
+.max {
+  max-width: $layout-max;
+}
+
+.content {
+  max-width: $layout-content;
+}
+
+.narrow {
+  max-width: $layout-narrow;
+}
+
+.full {
+  max-width: none;
+}

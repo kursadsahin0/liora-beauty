@@ -1,0 +1,142 @@
+@use "../../../styles/abstracts" as *;
+
+.section {
+  background-color: $color-cream;
+  color: $color-charcoal;
+  padding-block: $section-space;
+  border-top: $border-hairline;
+}
+
+.header {
+  display: grid;
+  justify-items: start;
+  gap: $space-sm;
+  text-align: left;
+  max-width: 38rem;
+  margin-bottom: $space-lg;
+
+  @include mq(lg) {
+    justify-items: center;
+    text-align: center;
+    margin-inline: auto;
+    margin-bottom: clamp($space-xl, 5vw, $space-2xl);
+  }
+}
+
+.eyebrow {
+  color: $color-burgundy;
+}
+
+.title {
+  font-family: $font-serif;
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  font-weight: 400;
+  line-height: $lh-snug;
+  letter-spacing: $tracking-heading;
+
+  :global(.split-word) {
+    margin-right: 0.18em;
+  }
+}
+
+.lead {
+  color: $color-charcoal-muted;
+  max-width: 34rem;
+}
+
+.sampleNote {
+  display: grid;
+  justify-items: center;
+  gap: $space-xs;
+  margin-top: $space-xs;
+  font-size: $fs-small;
+  color: $color-charcoal-muted;
+  max-width: 32rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.65rem;
+  border: 1px solid rgba($color-burgundy, 0.25);
+  font-family: $font-sans;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: $tracking-eyebrow;
+  text-transform: uppercase;
+  color: $color-burgundy;
+  background-color: rgba($color-ivory, 0.75);
+}
+
+.list {
+  display: grid;
+  gap: $space-lg;
+
+  @include mq(md) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: $space-md;
+  }
+
+  @include mq(lg) {
+    gap: $space-lg;
+  }
+}
+
+.member {
+  display: grid;
+  gap: $space-md;
+  background-color: $color-ivory;
+  padding: $space-sm $space-sm $space-md;
+}
+
+.portrait {
+  position: relative;
+  overflow: hidden;
+  background-color: $color-cream;
+  aspect-ratio: 4 / 5;
+
+  @include allow-motion {
+    &:hover .image,
+    &:active .image {
+      transform: scale(1.03);
+    }
+  }
+}
+
+.image {
+  object-fit: cover;
+  object-position: center 18%;
+  transition: transform $duration-slow $ease-out-quart;
+}
+
+.portrait :global(img) {
+  object-fit: cover;
+}
+
+.meta {
+  display: grid;
+  gap: $space-2xs;
+  padding-inline: $space-2xs;
+}
+
+.role {
+  font-family: $font-sans;
+  font-size: $fs-eyebrow;
+  font-weight: 500;
+  letter-spacing: $tracking-eyebrow;
+  text-transform: uppercase;
+  color: $color-burgundy;
+}
+
+.name {
+  font-family: $font-serif;
+  font-size: clamp(1.45rem, 2vw, 1.75rem);
+  font-weight: 400;
+  line-height: $lh-snug;
+}
+
+.focus {
+  color: $color-charcoal-muted;
+  font-size: $fs-small;
+  line-height: $lh-body;
+}

@@ -1,0 +1,179 @@
+// Design tokens — luxury beauty editorial system
+// SCSS variables for compile-time use; CSS custom properties for runtime theming.
+
+$color-ivory: #f8f5f0;
+$color-cream: #efe7dd;
+$color-burgundy: #572b3a;
+$color-rose: #c49a98;
+$color-charcoal: #242120;
+$color-white: #ffffff;
+
+$color-burgundy-deep: #3f1f2a;
+$color-rose-soft: #d4b5b3;
+$color-charcoal-muted: #4a4542;
+$color-border: rgba(36, 33, 32, 0.12);
+$color-border-strong: rgba(36, 33, 32, 0.22);
+$color-focus: #572b3a;
+
+$font-serif: var(--font-serif), "Cormorant Garamond", "Times New Roman", serif;
+$font-sans: var(--font-sans), "Manrope", "Helvetica Neue", sans-serif;
+
+$fs-display: clamp(2.75rem, 7.2vw, 5.75rem);
+$fs-h1: clamp(2.35rem, 5vw, 4rem);
+$fs-h2: clamp(1.85rem, 3.5vw, 3rem);
+$fs-h3: clamp(1.4rem, 2.5vw, 2rem);
+$fs-h4: clamp(1.2rem, 2vw, 1.5rem);
+$fs-lead: clamp(1.0625rem, 1.5vw, 1.35rem);
+$fs-body: 1.0625rem;
+$fs-small: 0.875rem;
+$fs-eyebrow: 0.75rem;
+
+$tap-min: 2.75rem;
+$section-space: clamp(2.75rem, 7vw, 9rem);
+
+$lh-tight: 1.1;
+$lh-snug: 1.25;
+$lh-body: 1.65;
+$lh-relaxed: 1.8;
+
+$tracking-display: -0.02em;
+$tracking-heading: -0.015em;
+$tracking-eyebrow: 0.18em;
+$tracking-label: 0.08em;
+
+$space-3xs: 0.25rem;
+$space-2xs: 0.5rem;
+$space-xs: 0.75rem;
+$space-sm: 1rem;
+$space-md: 1.5rem;
+$space-lg: 2rem;
+$space-xl: 3rem;
+$space-2xl: 4.5rem;
+$space-3xl: 6.5rem;
+$space-4xl: 9rem;
+
+$layout-max: 88rem;
+$layout-wide: 72rem;
+$layout-content: 42rem;
+$layout-narrow: 34rem;
+$gutter: clamp(1.15rem, 4vw, 3.5rem);
+
+$radius-none: 0;
+$radius-sm: 2px;
+$radius-md: 4px;
+$radius-pill: 999px;
+
+$border-hairline: 1px solid $color-border;
+$border-strong: 1px solid $color-border-strong;
+
+$ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+$ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+$ease-in-out-soft: cubic-bezier(0.45, 0, 0.55, 1);
+$ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+
+$duration-instant: 120ms;
+$duration-fast: 220ms;
+$duration-base: 400ms;
+$duration-slow: 700ms;
+$duration-dramatic: 1100ms;
+
+$z-base: 1;
+$z-header: 100;
+$z-overlay: 200;
+$z-modal: 300;
+$z-toast: 400;
+
+:root {
+  --color-ivory: #{$color-ivory};
+  --color-cream: #{$color-cream};
+  --color-burgundy: #{$color-burgundy};
+  --color-rose: #{$color-rose};
+  --color-charcoal: #{$color-charcoal};
+  --color-white: #{$color-white};
+  --color-burgundy-deep: #{$color-burgundy-deep};
+  --color-rose-soft: #{$color-rose-soft};
+  --color-charcoal-muted: #{$color-charcoal-muted};
+  --color-border: #{$color-border};
+  --color-border-strong: #{$color-border-strong};
+  --color-focus: #{$color-focus};
+  --color-bg: var(--color-ivory);
+  --color-fg: var(--color-charcoal);
+  --color-muted: var(--color-charcoal-muted);
+  --color-accent: var(--color-burgundy);
+  --color-accent-soft: var(--color-rose);
+
+  --font-serif: "Cormorant Garamond", "Times New Roman", serif;
+  --font-sans: "Manrope", "Helvetica Neue", sans-serif;
+
+  --fs-display: #{$fs-display};
+  --fs-h1: #{$fs-h1};
+  --fs-h2: #{$fs-h2};
+  --fs-h3: #{$fs-h3};
+  --fs-h4: #{$fs-h4};
+  --fs-lead: #{$fs-lead};
+  --fs-body: #{$fs-body};
+  --fs-small: #{$fs-small};
+  --fs-eyebrow: #{$fs-eyebrow};
+
+  --lh-tight: #{$lh-tight};
+  --lh-snug: #{$lh-snug};
+  --lh-body: #{$lh-body};
+  --lh-relaxed: #{$lh-relaxed};
+
+  --tracking-display: #{$tracking-display};
+  --tracking-heading: #{$tracking-heading};
+  --tracking-eyebrow: #{$tracking-eyebrow};
+  --tracking-label: #{$tracking-label};
+
+  --space-3xs: #{$space-3xs};
+  --space-2xs: #{$space-2xs};
+  --space-xs: #{$space-xs};
+  --space-sm: #{$space-sm};
+  --space-md: #{$space-md};
+  --space-lg: #{$space-lg};
+  --space-xl: #{$space-xl};
+  --space-2xl: #{$space-2xl};
+  --space-3xl: #{$space-3xl};
+  --space-4xl: #{$space-4xl};
+
+  --layout-max: #{$layout-max};
+  --layout-wide: #{$layout-wide};
+  --layout-content: #{$layout-content};
+  --layout-narrow: #{$layout-narrow};
+  --gutter: #{$gutter};
+
+  --radius-none: #{$radius-none};
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-pill: #{$radius-pill};
+
+  --ease-out-expo: #{$ease-out-expo};
+  --ease-out-quart: #{$ease-out-quart};
+  --ease-in-out-soft: #{$ease-in-out-soft};
+  --ease-standard: #{$ease-standard};
+
+  --duration-instant: #{$duration-instant};
+  --duration-fast: #{$duration-fast};
+  --duration-base: #{$duration-base};
+  --duration-slow: #{$duration-slow};
+  --duration-dramatic: #{$duration-dramatic};
+
+  --z-base: #{$z-base};
+  --z-header: #{$z-header};
+  --z-overlay: #{$z-overlay};
+  --z-modal: #{$z-modal};
+  --z-toast: #{$z-toast};
+
+  --header-height: 3.75rem;
+  --mobile-dock-height: 4.15rem;
+  --tap-min: #{$tap-min};
+  --section-space: #{$section-space};
+  --gutter-mobile: 1.15rem;
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --header-height: 4.25rem;
+    --mobile-dock-height: 0rem;
+  }
+}

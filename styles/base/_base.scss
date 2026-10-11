@@ -1,0 +1,62 @@
+@use "../abstracts" as *;
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-family: $font-sans;
+  font-size: $fs-body;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+section[id],
+main > [id] {
+  scroll-margin-top: calc(
+    var(--header-height) + env(safe-area-inset-top, 0px) + #{$space-md}
+  );
+  scroll-margin-bottom: calc(var(--mobile-dock-height) + #{$space-sm});
+}
+
+::selection {
+  background-color: rgba($color-burgundy, 0.18);
+  color: $color-charcoal;
+}
+
+.sr-only {
+  @include visually-hidden;
+}
+
+.skip-link {
+  position: absolute;
+  top: $space-sm;
+  left: $space-sm;
+  z-index: $z-toast;
+  padding: $space-2xs $space-sm;
+  background: $color-burgundy;
+  color: $color-white;
+  font-family: $font-sans;
+  font-size: $fs-small;
+  font-weight: 500;
+  letter-spacing: $tracking-label;
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform $duration-fast $ease-out-quart;
+
+  &:focus {
+    transform: translateY(0);
+    outline: 2px solid $color-white;
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,186 @@
+@use "../../../styles/abstracts" as *;
+
+.footer {
+  @include hairline-top;
+  background-color: $color-cream;
+  color: $color-charcoal;
+  padding-block: $space-md;
+
+  @include mq(lg) {
+    padding-block: $space-2xl calc($space-lg + env(safe-area-inset-bottom));
+  }
+}
+
+.grid {
+  display: grid;
+  gap: $space-sm;
+
+  @include mq(md) {
+    grid-template-columns: 1.4fr 1fr 1fr;
+    align-items: start;
+    gap: $space-2xl;
+  }
+}
+
+.brandBlock {
+  display: grid;
+  gap: $space-2xs;
+}
+
+.brand {
+  font-family: $font-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+
+  @include mq(md) {
+    font-size: $fs-h2;
+    margin-bottom: $space-sm;
+  }
+}
+
+.tagline {
+  display: none;
+  max-width: 22rem;
+  color: $color-charcoal-muted;
+
+  @include mq(md) {
+    display: block;
+  }
+}
+
+.explore {
+  display: none;
+
+  @include mq(md) {
+    display: block;
+  }
+}
+
+.contact {
+  .columnTitle {
+    @include mq-max(md) {
+      @include visually-hidden;
+    }
+  }
+
+  .list {
+    @include mq-max(md) {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: $space-2xs $space-sm;
+    }
+  }
+
+  .address {
+    @include mq-max(md) {
+      width: 100%;
+    }
+  }
+}
+
+.columnTitle {
+  font-family: $font-sans;
+  font-size: $fs-eyebrow;
+  font-weight: 500;
+  letter-spacing: $tracking-eyebrow;
+  text-transform: uppercase;
+  color: $color-burgundy;
+  margin-bottom: $space-sm;
+
+  @include mq(md) {
+    margin-bottom: $space-md;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2xs;
+
+  @include mq(md) {
+    gap: $space-xs;
+  }
+}
+
+.address {
+  display: block;
+  font-size: $fs-small;
+  color: $color-charcoal-muted;
+  line-height: $lh-body;
+}
+
+.link {
+  position: relative;
+  @include touch-link;
+  font-size: $fs-small;
+  text-decoration: none;
+  color: $color-charcoal-muted;
+  transition:
+    color $duration-fast $ease-out-quart,
+    transform $duration-fast $ease-out-quart;
+  width: fit-content;
+  @include interactive-focus;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0.45rem;
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform $duration-fast $ease-out-quart;
+  }
+
+  @include allow-motion {
+    &:hover,
+    &:active {
+      color: $color-burgundy;
+      transform: translateX(2px);
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+.meta {
+  margin-top: $space-md;
+  padding-top: $space-sm;
+  border-top: $border-hairline;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2xs;
+
+  @include mq(md) {
+    margin-top: $space-2xl;
+    padding-top: $space-md;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: $space-xs;
+  }
+}
+
+.copy {
+  font-size: 0.8rem;
+  color: $color-charcoal-muted;
+
+  @include mq(md) {
+    font-size: $fs-small;
+  }
+}
+
+.metaTagline {
+  display: none;
+
+  @include mq(md) {
+    display: block;
+  }
+}

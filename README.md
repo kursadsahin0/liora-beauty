@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Liora — Güzellik Atölyesi
 
-## Getting Started
+Premium güzellik salonu için tek sayfalık tanıtım ve randevu sitesi. Marka anlatısı, hizmetler, galeri, ekip, fiyatlar ve WhatsApp üzerinden randevu akışını bir araya getirir.
 
-First, run the development server:
+## Teknoloji
+
+- **Next.js 16** (App Router)
+- **React 19**
+- **TypeScript**
+- **SCSS Modules** + tasarım token’ları (`styles/abstracts`)
+- **GSAP** (scroll / reveal animasyonları)
+- **lucide-react** (ikonlar)
+
+## Kurulum
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Tarayıcıda [http://localhost:3000](http://localhost:3000) adresini açın.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Diğer komutlar
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build   # üretim derlemesi
+npm run start   # üretim sunucusu
+npm run lint    # ESLint
+```
 
-## Learn More
+## Proje yapısı
 
-To learn more about Next.js, take a look at the following resources:
+```text
+app/                  # layout, ana sayfa, SEO (robots, sitemap, icon)
+components/
+  home/               # Hero, hikâye, hizmetler, galeri, ekip, fiyat, randevu…
+  layout/             # Header, Footer, MobileDock, SiteShell
+  ui/                 # Button, Container, Section
+lib/
+  site.ts             # salon adı, iletişim, navigasyon
+  media.ts            # görsel kayıtları (URL / alt metin)
+  booking.ts          # form doğrulama + WhatsApp mesajı
+  content/            # metin içerikleri (örnek / gerçek)
+  animations/         # GSAP yardımcılar
+styles/               # global SCSS, token’lar, tipografi
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Lansman öncesi düzenleme
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Örnek / placeholder veriler canlıya çıkmadan gerçek salon bilgileriyle değiştirilmelidir.
 
-## Deploy on Vercel
+| Ne | Dosya |
+| --- | --- |
+| İsim, telefon, WhatsApp, adres, saatler, sosyal | `lib/site.ts` |
+| Görseller (hero, galeri, ekip…) | `lib/media.ts` |
+| Hikâye, galeri, ekip, yorumlar | `lib/content/brand.ts` |
+| Hizmetler ve fiyatlar | `lib/content/services.ts` |
+| Randevu formu metinleri | `lib/content/booking.ts` |
+| Hero / atölye metinleri | `lib/content/home.ts` |
+| Site URL (SEO, sitemap) | `lib/site.ts` → `url` |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`siteConfig.contact.isPlaceholder` gerçek iletişim bilgileri girildikten sonra `false` yapılmalıdır.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Özellikler
+
+- Editorial masaüstü düzeni + mobil uygulama benzeri alt dock
+- WhatsApp randevu formu (`wa.me` yönlendirmesi)
+- Galeri lightbox (klavye: Esc / ok tuşları)
+- `prefers-reduced-motion` desteği
+- Metadata, Open Graph, `robots.ts`, `sitemap.ts`, JSON-LD
+
+## Notlar
+
+- Görseller şu an Unsplash örnek URL’leridir; yerellerle değiştirmek için `lib/media.ts` yeterlidir.
+- Geliştirmede görünen Next.js rozeti `next.config.ts` içinde `devIndicators: false` ile kapalıdır.
+- Tarayıcı eklentileri (ör. ColorZilla) hydration uyarısı üretebilir; bu uygulama hatası değildir.
+
+## Lisans
+
+Private — tüm hakları saklıdır.
+# deneme

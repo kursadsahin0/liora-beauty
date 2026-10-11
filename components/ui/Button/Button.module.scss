@@ -1,0 +1,142 @@
+@use "../../../styles/abstracts" as *;
+
+.root {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2xs;
+  min-height: $tap-min;
+  padding-inline: $space-lg;
+  overflow: hidden;
+  font-family: $font-sans;
+  font-size: $fs-small;
+  font-weight: 500;
+  letter-spacing: $tracking-label;
+  line-height: 1;
+  text-decoration: none;
+  border-radius: $radius-none;
+  transition:
+    background-color $duration-fast $ease-out-quart,
+    color $duration-fast $ease-out-quart,
+    border-color $duration-fast $ease-out-quart,
+    transform $duration-fast $ease-out-quart,
+    letter-spacing $duration-fast $ease-out-quart;
+  @include interactive-focus;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      120deg,
+      transparent 30%,
+      rgba($color-white, 0.12) 48%,
+      transparent 62%
+    );
+    transform: translateX(-120%);
+    pointer-events: none;
+  }
+
+  @include allow-motion {
+    &:hover {
+      transform: translateY(-1px);
+      letter-spacing: 0.1em;
+
+      &::before {
+        transform: translateX(120%);
+        transition: transform $duration-slow $ease-out-quart;
+      }
+    }
+
+    &:active {
+      transform: translateY(0);
+      letter-spacing: $tracking-label;
+    }
+  }
+}
+
+.primary {
+  background-color: $color-burgundy;
+  color: $color-ivory;
+  border: 1px solid $color-burgundy;
+
+  &:hover,
+  &:active {
+    background-color: $color-burgundy-deep;
+    border-color: $color-burgundy-deep;
+  }
+}
+
+.secondary {
+  background-color: transparent;
+  color: $color-charcoal;
+  border: 1px solid $color-border-strong;
+
+  &::before {
+    background: linear-gradient(
+      120deg,
+      transparent 30%,
+      rgba($color-burgundy, 0.08) 48%,
+      transparent 62%
+    );
+  }
+
+  &:hover,
+  &:active {
+    border-color: $color-burgundy;
+    color: $color-burgundy;
+  }
+}
+
+.ghost {
+  background-color: transparent;
+  color: $color-burgundy;
+  border: 1px solid transparent;
+  padding-inline: $space-xs;
+  min-height: $tap-min;
+  overflow: visible;
+
+  &::before {
+    display: none;
+  }
+
+  &:hover,
+  &:active {
+    color: $color-burgundy-deep;
+    transform: none;
+    letter-spacing: $tracking-label;
+  }
+}
+
+.light {
+  background-color: $color-ivory;
+  color: $color-burgundy;
+  border: 1px solid $color-ivory;
+
+  &:hover,
+  &:active {
+    background-color: $color-cream;
+    border-color: $color-cream;
+  }
+}
+
+.sm {
+  min-height: $tap-min;
+  padding-inline: $space-md;
+}
+
+.md {
+  min-height: $tap-min;
+  padding-inline: $space-lg;
+}
+
+.lg {
+  min-height: 3.25rem;
+  padding-inline: $space-xl;
+  font-size: $fs-body;
+
+  @include mq(sm) {
+    min-height: 3.5rem;
+  }
+}

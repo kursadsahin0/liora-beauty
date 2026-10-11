@@ -1,0 +1,411 @@
+@use "../../../styles/abstracts" as *;
+
+.section {
+  position: relative;
+  background-color: $color-ivory;
+  color: $color-charcoal;
+  padding-block: $section-space;
+  border-top: $border-hairline;
+  scroll-margin-top: calc(var(--header-height) + $space-md);
+}
+
+.inner {
+  display: grid;
+  gap: clamp($space-xl, 5vw, $space-3xl);
+
+  @include mq(lg) {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: start;
+  }
+}
+
+.intro {
+  display: grid;
+  gap: $space-md;
+  max-width: 36rem;
+}
+
+.eyebrow {
+  color: $color-burgundy;
+}
+
+.title {
+  font-family: $font-serif;
+  font-size: clamp(2.35rem, 4.8vw, 3.6rem);
+  font-weight: 400;
+  line-height: $lh-snug;
+  letter-spacing: $tracking-heading;
+  max-width: 12ch;
+
+  :global(.split-word) {
+    margin-right: 0.18em;
+  }
+}
+
+.lead {
+  color: $color-charcoal-muted;
+  max-width: 32rem;
+}
+
+.placeholderNote {
+  font-size: $fs-small;
+  color: $color-burgundy;
+  padding-top: $space-xs;
+  border-top: $border-hairline;
+}
+
+.quickActions {
+  display: grid;
+  gap: $space-sm;
+  margin-top: $space-sm;
+
+  @include mq(sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.quickAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2xs;
+  min-height: 3.25rem;
+  padding-inline: $space-md;
+  font-family: $font-sans;
+  font-size: $fs-small;
+  font-weight: 500;
+  letter-spacing: $tracking-label;
+  text-decoration: none;
+  transition:
+    background-color $duration-fast $ease-out-quart,
+    color $duration-fast $ease-out-quart,
+    border-color $duration-fast $ease-out-quart,
+    transform $duration-fast $ease-out-quart;
+  @include interactive-focus;
+
+  @include allow-motion {
+    &:hover,
+    &:active {
+      transform: translateY(-1px);
+    }
+  }
+}
+
+.whatsapp {
+  background-color: $color-burgundy;
+  color: $color-ivory;
+  border: 1px solid $color-burgundy;
+
+  &:hover,
+  &:active {
+    background-color: $color-burgundy-deep;
+    border-color: $color-burgundy-deep;
+  }
+}
+
+.call {
+  background-color: transparent;
+  color: $color-charcoal;
+  border: 1px solid $color-border-strong;
+
+  &:hover,
+  &:active {
+    border-color: $color-burgundy;
+    color: $color-burgundy;
+  }
+}
+
+.panel {
+  background-color: $color-cream;
+  padding: clamp($space-lg, 4vw, $space-xl);
+  border: $border-hairline;
+}
+
+.formTitle {
+  font-family: $font-serif;
+  font-size: clamp(1.65rem, 2.5vw, 2rem);
+  font-weight: 400;
+  margin-bottom: $space-2xs;
+}
+
+.formLead {
+  font-size: $fs-small;
+  color: $color-charcoal-muted;
+  margin-bottom: $space-lg;
+}
+
+.form {
+  display: grid;
+  gap: $space-md;
+}
+
+.field {
+  display: grid;
+  gap: $space-2xs;
+}
+
+.labelRow {
+  display: flex;
+  justify-content: space-between;
+  gap: $space-sm;
+  align-items: baseline;
+}
+
+.label {
+  font-family: $font-sans;
+  font-size: $fs-small;
+  font-weight: 500;
+  letter-spacing: $tracking-label;
+  color: $color-charcoal;
+}
+
+.hint {
+  font-size: $fs-eyebrow;
+  letter-spacing: $tracking-eyebrow;
+  text-transform: uppercase;
+  color: $color-charcoal-muted;
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid $color-border-strong;
+  background-color: $color-ivory;
+  color: $color-charcoal;
+  font-family: $font-sans;
+  font-size: $fs-body;
+  transition:
+    border-color $duration-fast $ease-out-quart,
+    background-color $duration-fast $ease-out-quart;
+  @include interactive-focus;
+
+  &:hover {
+    border-color: rgba($color-burgundy, 0.45);
+  }
+}
+
+.textarea {
+  min-height: 7.5rem;
+  resize: vertical;
+  line-height: $lh-body;
+}
+
+.fieldError .input,
+.fieldError .select,
+.fieldError .textarea {
+  border-color: $color-burgundy;
+  background-color: rgba($color-rose, 0.12);
+}
+
+.error {
+  font-size: $fs-small;
+  color: $color-burgundy;
+}
+
+.formError {
+  padding: $space-sm;
+  border: 1px solid rgba($color-burgundy, 0.35);
+  background-color: rgba($color-rose, 0.14);
+  color: $color-burgundy;
+  font-size: $fs-small;
+}
+
+.submit {
+  width: 100%;
+  min-height: 3.25rem;
+}
+
+.success {
+  display: grid;
+  gap: $space-md;
+}
+
+.successTitle {
+  font-family: $font-serif;
+  font-size: clamp(1.5rem, 2.4vw, 1.85rem);
+  font-weight: 400;
+}
+
+.successBody {
+  color: $color-charcoal-muted;
+  font-size: $fs-small;
+}
+
+.successActions {
+  display: grid;
+  gap: $space-sm;
+
+  @include mq(sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.details {
+  display: grid;
+  gap: 0;
+  margin-top: $space-md;
+  padding-top: $space-md;
+  border-top: $border-hairline;
+
+  @include mq-max(md) {
+    grid-template-columns: 1fr;
+  }
+
+  @include mq(md) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: $space-xl;
+    margin-top: $space-xl;
+    padding-top: $space-xl;
+  }
+
+  @include mq(lg) {
+    grid-column: 1 / -1;
+  }
+
+  @include mq(xl) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.detailBlock {
+  display: grid;
+  gap: $space-3xs;
+  align-content: start;
+  padding-block: $space-sm;
+  border-bottom: $border-hairline;
+
+  @include mq(md) {
+    gap: $space-2xs;
+    padding-block: 0;
+    border-bottom: 0;
+  }
+}
+
+.detailPhones {
+  @include mq-max(md) {
+    display: none;
+  }
+}
+
+.detailSocial {
+  @include mq-max(md) {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+.detailLabel {
+  font-family: $font-sans;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: $tracking-eyebrow;
+  text-transform: uppercase;
+  color: $color-burgundy;
+
+  @include mq(md) {
+    font-size: $fs-eyebrow;
+  }
+}
+
+.detailLabelSpaced {
+  margin-top: $space-sm;
+}
+
+.detailText {
+  font-family: $font-sans;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: $lh-snug;
+
+  @include mq(md) {
+    font-family: $font-serif;
+    font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+    font-weight: 400;
+  }
+}
+
+.detailLink {
+  @include touch-link;
+  font-family: $font-sans;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: $lh-snug;
+  color: $color-charcoal;
+  text-decoration: none;
+  width: fit-content;
+  transition: color $duration-fast $ease-out-quart;
+  @include interactive-focus;
+
+  @include mq(md) {
+    font-family: $font-serif;
+    font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+    font-weight: 400;
+  }
+
+  &:hover,
+  &:active {
+    color: $color-burgundy;
+  }
+}
+
+.hoursList {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.hoursRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: $space-2xs $space-sm;
+  font-size: 0.85rem;
+  color: $color-charcoal-muted;
+
+  @include mq(md) {
+    justify-content: flex-start;
+    font-size: $fs-small;
+  }
+}
+
+.hoursDays {
+  color: $color-charcoal;
+  font-weight: 500;
+}
+
+.socialList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-sm;
+}
+
+.socialHint {
+  display: none;
+  font-size: $fs-small;
+  color: $color-charcoal-muted;
+
+  @include mq(md) {
+    display: block;
+  }
+}
+
+.socialLink {
+  @include touch-link;
+  font-size: $fs-small;
+  letter-spacing: $tracking-label;
+  text-decoration: none;
+  color: $color-charcoal-muted;
+  border-bottom: 1px solid transparent;
+  transition:
+    color $duration-fast $ease-out-quart,
+    border-color $duration-fast $ease-out-quart;
+  @include interactive-focus;
+
+  &:hover,
+  &:active {
+    color: $color-burgundy;
+    border-bottom-color: rgba($color-burgundy, 0.4);
+  }
+}

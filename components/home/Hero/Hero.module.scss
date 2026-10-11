@@ -1,0 +1,386 @@
+@use "../../../styles/abstracts" as *;
+
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  background-color: $color-ivory;
+  overflow: clip;
+
+  @include mq-max(lg) {
+    min-height: calc(100dvh - env(safe-area-inset-bottom, 0px));
+    padding-top: calc(var(--header-height) + env(safe-area-inset-top, 0px));
+  }
+}
+
+.layout {
+  display: grid;
+  min-height: 100dvh;
+
+  @include mq-max(lg) {
+    min-height: calc(
+      100dvh - var(--header-height) - env(safe-area-inset-top, 0px)
+    );
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+  }
+
+  @include mq(lg) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  }
+}
+
+.copyPane {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  order: 2;
+  padding:
+    $space-xl
+    $gutter
+    calc(#{$space-lg} + var(--mobile-dock-height) + env(safe-area-inset-bottom, 0px));
+  background: linear-gradient(
+    180deg,
+    rgba($color-charcoal, 0) 0%,
+    rgba($color-charcoal, 0.28) 28%,
+    rgba($color-charcoal, 0.72) 100%
+  );
+  color: $color-ivory;
+
+  @include mq-max(lg) {
+    grid-area: 1 / 1;
+    order: unset;
+  }
+
+  @include mq(lg) {
+    order: 1;
+    justify-content: center;
+    color: $color-charcoal;
+    background: $color-ivory;
+    padding:
+      calc(var(--header-height) + $space-xl)
+      clamp($space-lg, 5vw, $space-3xl)
+      $space-2xl
+      $gutter;
+  }
+}
+
+.copy {
+  max-width: 34rem;
+}
+
+.eyebrow {
+  margin-bottom: $space-sm;
+  color: rgba($color-ivory, 0.82);
+
+  @include mq(lg) {
+    margin-bottom: $space-md;
+    color: $color-burgundy;
+  }
+}
+
+.headline {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: $space-sm;
+  font-family: $font-serif;
+  font-size: clamp(2.4rem, 9vw, 3.4rem);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: $tracking-display;
+  color: $color-ivory;
+  text-shadow: 0 1px 18px rgba($color-charcoal, 0.25);
+
+  @include mq(lg) {
+    margin-bottom: $space-lg;
+    font-size: clamp(2.55rem, 9vw, 5.75rem);
+    line-height: 0.96;
+    color: $color-charcoal;
+    text-shadow: none;
+  }
+}
+
+.line {
+  display: block;
+
+  :global(.split-word) {
+    margin-right: 0.22em;
+  }
+}
+
+.lineAccent {
+  color: $color-rose-soft;
+  font-style: italic;
+  font-weight: 500;
+
+  @include mq(lg) {
+    color: $color-burgundy;
+  }
+}
+
+.lead {
+  max-width: 24rem;
+  margin-bottom: $space-md;
+  color: rgba($color-ivory, 0.88);
+  font-size: 0.98rem;
+
+  @include mq(lg) {
+    margin-bottom: $space-xl;
+    color: $color-charcoal-muted;
+    font-size: inherit;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  margin-bottom: 0;
+
+  a {
+    width: 100%;
+    min-height: 3.1rem;
+    justify-content: center;
+  }
+
+  a:nth-child(2) {
+    color: $color-ivory;
+    border-color: rgba($color-ivory, 0.55);
+    background-color: transparent;
+
+    &:hover,
+    &:active {
+      background-color: rgba($color-ivory, 0.1);
+      border-color: $color-ivory;
+      color: $color-ivory;
+    }
+  }
+
+  @include mq(sm) {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    a {
+      width: auto;
+      flex: 1 1 auto;
+      min-width: min(100%, 10.5rem);
+    }
+  }
+
+  @include mq(lg) {
+    margin-bottom: $space-xl;
+
+    a:nth-child(2) {
+      color: $color-charcoal;
+      border-color: $color-border-strong;
+      background-color: transparent;
+
+      &:hover,
+      &:active {
+        background-color: transparent;
+        border-color: $color-charcoal;
+        color: $color-charcoal;
+      }
+    }
+  }
+}
+
+.footerBar {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-md;
+  margin-top: auto;
+  padding-top: $space-md;
+  border-top: $border-hairline;
+
+  @include mq(lg) {
+    display: flex;
+  }
+}
+
+.metaLabel {
+  color: $color-burgundy;
+}
+
+.scrollHint {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2xs;
+  min-height: $tap-min;
+  padding-inline: 0.15rem;
+  font-family: $font-sans;
+  font-size: $fs-eyebrow;
+  font-weight: 500;
+  letter-spacing: $tracking-eyebrow;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $color-charcoal-muted;
+  transition: color $duration-fast $ease-out-quart;
+  @include interactive-focus;
+
+  @include allow-motion {
+    &:hover,
+    &:active {
+      color: $color-burgundy;
+
+      .scrollGlyph {
+        transform: translateY(2px);
+      }
+    }
+  }
+}
+
+.scrollGlyph {
+  display: inline-flex;
+  width: 1rem;
+  height: 1.5rem;
+  align-items: flex-start;
+  justify-content: center;
+  border: 1px solid $color-border-strong;
+  border-radius: $radius-pill;
+  padding-top: 0.28rem;
+  transition: transform $duration-fast $ease-out-quart;
+}
+
+.scrollDot {
+  width: 0.2rem;
+  height: 0.2rem;
+  border-radius: 50%;
+  background-color: $color-burgundy;
+}
+
+.mediaPane {
+  position: relative;
+  order: 1;
+  min-height: inherit;
+  background-color: $color-cream;
+
+  @include mq-max(lg) {
+    grid-area: 1 / 1;
+    order: unset;
+    min-height: 100%;
+  }
+
+  @include mq(lg) {
+    order: 2;
+    min-height: 100dvh;
+  }
+}
+
+.mediaFrame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.mediaParallax {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+
+  @include mq(lg) {
+    inset: -6% 0;
+    height: 112%;
+  }
+}
+
+.image {
+  object-fit: cover;
+  object-position: 50% 22%;
+
+  @include mq(md) {
+    object-position: 50% 20%;
+  }
+
+  @include mq(lg) {
+    object-position: 54% 20%;
+  }
+}
+
+.mediaFrame :global(img),
+.mediaParallax :global(img) {
+  object-fit: cover;
+}
+
+.mediaCaption {
+  position: absolute;
+  left: $gutter;
+  bottom: $space-sm;
+  z-index: 2;
+  display: none;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: $space-2xs $space-xs;
+  background-color: rgba($color-ivory, 0.92);
+  backdrop-filter: blur(8px);
+
+  @include mq(lg) {
+    display: flex;
+    left: $space-md;
+    bottom: $space-md;
+  }
+}
+
+.mediaIndex {
+  font-family: $font-sans;
+  font-size: $fs-eyebrow;
+  font-weight: 500;
+  letter-spacing: $tracking-eyebrow;
+  text-transform: uppercase;
+  color: $color-burgundy;
+}
+
+.mediaLabel {
+  font-family: $font-serif;
+  font-size: 1.05rem;
+  color: $color-charcoal;
+  line-height: 1.2;
+}
+
+.ornament {
+  display: none;
+  position: absolute;
+  top: calc(var(--header-height) + $space-md);
+  left: $gutter;
+  z-index: 3;
+  font-family: $font-serif;
+  font-size: clamp(4rem, 7vw, 6rem);
+  line-height: 1;
+  color: rgba($color-rose, 0.35);
+  pointer-events: none;
+  user-select: none;
+
+  @include mq(xl) {
+    display: block;
+  }
+}
+
+.veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba($color-charcoal, 0.2) 0%,
+    rgba($color-charcoal, 0.05) 35%,
+    rgba($color-charcoal, 0.15) 100%
+  );
+
+  @include mq(lg) {
+    background:
+      linear-gradient(
+        90deg,
+        rgba($color-ivory, 0.5) 0%,
+        rgba($color-ivory, 0) 22%
+      ),
+      linear-gradient(
+        180deg,
+        rgba($color-charcoal, 0.22) 0%,
+        rgba($color-charcoal, 0) 24%
+      );
+  }
+}

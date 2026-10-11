@@ -1,0 +1,136 @@
+@use "../../../styles/abstracts" as *;
+
+.section {
+  background-color: $color-cream;
+  color: $color-charcoal;
+  padding-block: $section-space;
+  border-top: $border-hairline;
+}
+
+.header {
+  display: grid;
+  gap: $space-lg;
+  margin-bottom: clamp($space-xl, 5vw, $space-2xl);
+
+  @include mq(lg) {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp($space-xl, 5vw, $space-3xl);
+    align-items: end;
+  }
+}
+
+.intro {
+  display: grid;
+  gap: $space-md;
+}
+
+.eyebrowRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-sm $space-md;
+}
+
+.eyebrow {
+  color: $color-burgundy;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid rgba($color-burgundy, 0.28);
+  font-family: $font-sans;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: $tracking-eyebrow;
+  text-transform: uppercase;
+  color: $color-burgundy;
+  background-color: rgba($color-ivory, 0.7);
+}
+
+.title {
+  font-family: $font-serif;
+  font-size: clamp(2.25rem, 4.5vw, 3.4rem);
+  font-weight: 400;
+  line-height: $lh-snug;
+  letter-spacing: $tracking-heading;
+  max-width: 14ch;
+
+  :global(.split-word) {
+    margin-right: 0.18em;
+  }
+}
+
+.copy {
+  display: grid;
+  gap: $space-sm;
+  max-width: 34rem;
+
+  @include mq(lg) {
+    justify-self: end;
+    width: 100%;
+    padding-bottom: $space-2xs;
+  }
+}
+
+.lead {
+  color: $color-charcoal-muted;
+}
+
+.sampleNote {
+  font-size: $fs-small;
+  color: $color-charcoal-muted;
+  padding-top: $space-sm;
+  border-top: $border-hairline;
+}
+
+.list {
+  display: grid;
+  gap: $space-lg;
+
+  @include mq(lg) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: $space-xl;
+  }
+}
+
+.item {
+  display: grid;
+  gap: $space-md;
+  padding-top: $space-md;
+  border-top: $border-hairline;
+
+  @include mq(lg) {
+    &:nth-child(2) {
+      margin-top: $space-xl;
+    }
+
+    &:nth-child(3) {
+      margin-top: $space-md;
+    }
+  }
+}
+
+.mark {
+  font-family: $font-serif;
+  font-size: clamp(2.5rem, 4vw, 3.25rem);
+  line-height: 1;
+  color: $color-rose;
+}
+
+.quote {
+  font-family: $font-serif;
+  font-size: clamp(1.35rem, 2.2vw, 1.65rem);
+  font-weight: 400;
+  line-height: $lh-snug;
+  color: $color-charcoal;
+  max-width: 22ch;
+}
+
+.attribution {
+  font-family: $font-sans;
+  font-size: $fs-small;
+  color: $color-charcoal-muted;
+  letter-spacing: $tracking-label;
+}

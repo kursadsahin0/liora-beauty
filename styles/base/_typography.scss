@@ -1,0 +1,72 @@
+@use "../abstracts" as *;
+
+.t-display {
+  font-family: $font-serif;
+  font-size: $fs-display;
+  font-weight: 400;
+  line-height: $lh-tight;
+  letter-spacing: $tracking-display;
+}
+
+.t-h1 {
+  font-family: $font-serif;
+  font-size: $fs-h1;
+  font-weight: 400;
+  line-height: $lh-tight;
+  letter-spacing: $tracking-heading;
+}
+
+.t-h2 {
+  font-family: $font-serif;
+  font-size: $fs-h2;
+  font-weight: 400;
+  line-height: $lh-snug;
+  letter-spacing: $tracking-heading;
+}
+
+.t-h3 {
+  font-family: $font-serif;
+  font-size: $fs-h3;
+  font-weight: 500;
+  line-height: $lh-snug;
+}
+
+.t-h4 {
+  font-family: $font-sans;
+  font-size: $fs-h4;
+  font-weight: 500;
+  line-height: $lh-snug;
+  letter-spacing: $tracking-label;
+}
+
+.t-lead {
+  font-family: $font-sans;
+  font-size: $fs-lead;
+  font-weight: 400;
+  line-height: $lh-relaxed;
+  color: $color-charcoal-muted;
+}
+
+.t-body {
+  font-family: $font-sans;
+  font-size: $fs-body;
+  font-weight: 400;
+  line-height: $lh-body;
+}
+
+.t-small {
+  font-family: $font-sans;
+  font-size: $fs-small;
+  font-weight: 400;
+  line-height: $lh-body;
+}
+
+.t-eyebrow {
+  font-family: $font-sans;
+  font-size: $fs-eyebrow;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: $tracking-eyebrow;
+  text-transform: uppercase;
+  color: $color-burgundy;
+}
